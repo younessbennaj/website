@@ -12,13 +12,40 @@ const PortfolioSection = styled.section`
     }
 `
 
+const PortfolioContainer = styled.div`
+    width: 100%;
+`
+
 // PROJECT CARD STYLED COMPONENTS //
+
+//component to help us with responsive design
+const Cell = styled.div`
+    box-sizing: border-box;
+    display: inline-block;
+    width: 33%;
+    padding: 1em;
+
+    @media screen and (min-width: 1400px) {
+        width: 25%;
+    }
+
+    @media screen and (max-width: 900px) {
+        width: 50%;
+    }
+
+    @media screen and (max-width: 480px) {
+        display: block;
+        width: 100%;
+    }
+
+`;
 
 const ProjectCardContainer = styled.div`
     height: max-content;
-    width: 90%;
+    width: 100%;
+    display: inline-block;
     background-color: white;
-    margin: 2em auto;
+    /* margin: 2em 1em; */
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 `
@@ -40,6 +67,7 @@ const ProjectCardContent = styled.div`
 const ProjectCardImage = styled.img`
     width: 100%;
     height: 35%;
+    border-radius: 10px 10px 0 0;
 `
 
 const ProjectChips = styled.span`
@@ -200,9 +228,15 @@ const Portfolio = () => {
     return (
         <PortfolioSection id="portfolio">
             <h2>Mes projets</h2>
-            {mockProjectsModel.map(project => {
-                return <ProjectCard key={project.title} project={project} />
-            })}
+            <PortfolioContainer>
+                {mockProjectsModel.map(project => {
+                    return (
+                        <Cell key={project.title}>
+                            <ProjectCard key={project.title} project={project} />
+                        </Cell>
+                    )
+                })}
+            </PortfolioContainer>
         </PortfolioSection>
     );
 }
