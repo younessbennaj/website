@@ -160,6 +160,11 @@ const StyledBubble = styled.div`
         padding-top: 0.7em;
         padding-bottom: 0.7em;
         font-size: 1.3em;
+        
+        @media screen and (max-width: 380px) {
+            font-size: 1.1em;
+        }
+
     }
 
 `
